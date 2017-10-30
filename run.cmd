@@ -1,0 +1,1 @@
+python3 wechat_alarm.py
