@@ -2,6 +2,7 @@
 import datetime
 import ssh
 import wechat
+import os
 
 now = datetime.datetime.now()   #获取当前时间
 #print("Today is %s." % now.strftime('%Y%m%d')) 
@@ -62,6 +63,15 @@ message_wx4 = "%s  %s    %s    %s        %s\\n" % (mr4[0],mr4[1],mr4[2],mr4[3],m
 message_wx5 = "%s  %s    %s    %s        %s\\n" % (mr5[0],mr5[1],mr5[2],mr5[3],mr5[4])
 message_wx6 = "%s  %s    %s    %s        %s\\n" % (mr6[0],mr6[1],mr6[2],mr6[3],mr6[4])
 message_wx7 = "%s  %s    %s    %s        %s" % (mr7[0],mr7[1],mr7[2],mr7[3],mr7[4])
+
+
+
+if not os.path.isdir(os.path.abspath('./log')) :        #若 log 文件夹不存在则创建log文件夹
+    os.makedirs(os.path.abspath('./log'))
+file = open(os.path.abspath('./log/')+ '\\' + now.strftime('%Y_%m_%d_%H_%M_%S')+ '.log' ,mode = 'w+' ,encoding = 'utf-8')
+file.write(title + message_wx0 + message_wx1 + message_wx2 + message_wx3 + message_wx4 + message_wx5 + message_wx6 + message_wx7)
+file.flush()
+file.close()
 
 print(title + message_wx0 + message_wx1 + message_wx2 + message_wx3 + message_wx4 + message_wx5 + message_wx6 + message_wx7)
 
