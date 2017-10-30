@@ -6,10 +6,10 @@ class sshOpen:
     def __init__(self):
         pass
     def sshcon(self,taghost,tagport = 22,taguser = 'root',tagpassword = 'smnra000',tagcmd = 'ls -l'):
-        self.ssh = paramiko.SSHClient()  #´´½¨SSH¶ÔÏó
-        self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())   #°ÑÒªÁ¬½ÓµÄ»úÆ÷Ìí¼Óµ½known_hostsÎÄ¼şÖĞ
-        self.ssh.connect(hostname = taghost, port = tagport, username = taguser, password = tagpassword) #Á¬½Ó·şÎñÆ÷
-        self.stdin, self.stdout, self.stderr = self.ssh.exec_command(tagcmd) #Ö´ĞĞÃüÁîÓï¾ä
+        self.ssh = paramiko.SSHClient()  #åˆ›å»ºSSHå¯¹è±¡
+        self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())   #æŠŠè¦è¿æ¥çš„æœºå™¨æ·»åŠ åˆ°known_hostsæ–‡ä»¶ä¸­
+        self.ssh.connect(hostname = taghost, port = tagport, username = taguser, password = tagpassword) #è¿æ¥æœåŠ¡å™¨
+        self.stdin, self.stdout, self.stderr = self.ssh.exec_command(tagcmd) #æ‰§è¡Œå‘½ä»¤è¯­å¥
         self.result = self.stdout.read()
         if not self.result:
             self.result = self.stderr.read()
@@ -18,11 +18,11 @@ class sshOpen:
 
 
 def sshOpenFunc(taghost,tagport = 22,taguser = 'root',tagpassword = 'smnra000',tagcmd = 'ls -l'):
-    ssh = paramiko.SSHClient()  #´´½¨SSH¶ÔÏó
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())   #°ÑÒªÁ¬½ÓµÄ»úÆ÷Ìí¼Óµ½known_hostsÎÄ¼şÖĞ
-    ssh.connect(hostname = taghost, port = tagport, username = taguser, password = tagpassword) #Á¬½Ó·şÎñÆ÷
-    #tagcmd = 'ls -l;ifconfig' #¶à¸öÃüÁîÓÃ;¸ô¿ª
-    stdin, stdout, stderr = ssh.exec_command(tagcmd) #Ö´ĞĞÃüÁîÓï¾ä
+    ssh = paramiko.SSHClient()  #åˆ›å»ºSSHå¯¹è±¡
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())   #æŠŠè¦è¿æ¥çš„æœºå™¨æ·»åŠ åˆ°known_hostsæ–‡ä»¶ä¸­
+    ssh.connect(hostname = taghost, port = tagport, username = taguser, password = tagpassword) #è¿æ¥æœåŠ¡å™¨
+    #tagcmd = 'ls -l;ifconfig' #å¤šä¸ªå‘½ä»¤ç”¨;éš”å¼€
+    stdin, stdout, stderr = ssh.exec_command(tagcmd) #æ‰§è¡Œå‘½ä»¤è¯­å¥
     result = stdout.read()
     if not result:
         result = stderr.read()
